@@ -6,8 +6,87 @@ html, body{
     justify-content: center;
 }
 
-.App{
-    width: 400px;
-    height: 600px;
-    border: 2px solid black;
+.App{     
+    .container{
+        height: 600px;
+        width: 400px;        
+        border: 1px solid black;
+        .grid{
+            width: 100%;
+            height: 100%;            
+            display: grid;
+            gap: 1%;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(7, 1fr);
+            grid-template-areas:
+            "display display display display"
+            "display display display display"
+            "AC AC div times"
+            "seven eight nine minus"
+            "four five six plus"
+            "one two three equal"
+            "zero zero dot equal"            
+            ;
+            .display{
+                grid-area: display;
+            }            
+            .button{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid black;                
+                &.AC{
+                    grid-area: AC;                    
+                }
+                &.div{
+                    grid-area: div;
+                }
+                &.times{
+                    grid-area: times;
+                }
+                &.seven{
+                    grid-area: seven;
+                }
+                &.eight{
+                    grid-area: eight;
+                }
+                &.nine{
+                    grid-area: nine;
+                }
+                &.minus{
+                    grid-area: minus;
+                }
+                &.four{
+                    grid-area: four;
+                }
+                &.five{
+                    grid-area: five;
+                }
+                &.six{
+                    grid-area: six;
+                }
+                &.plus{
+                    grid-area: plus;
+                }
+                &.one{
+                    grid-area: one;
+                }
+                &.two{
+                    grid-area: two;
+                }
+                &.three{
+                    grid-area: three;
+                }
+                &.equal{
+                    grid-area: equal;
+                }
+                &.zero{
+                    grid-area: zero;
+                }
+                &.dot{
+                    grid-area: dot;
+                }
+            }
+        }
+    }
 }
