@@ -4,34 +4,45 @@ import './style.css';
 
 function App() {
 
-  const [expression, setExpression] = useState("")
-  const [answer, setAnswer] = useState("0")
+  const [calc, setCalc] = useState("");
+  const [result, setResult] = useState("0");
 
-  const display = (symbol) => { 
-    setExpression((prev) => prev + symbol)
+  const operators = ['/', '*', '+', '-', '.'];
+
+  const display = (value) => {
+       if(
+            operators.includes(value) && calc === '' ||
+            operators.includes(value) && operators.includes(calc.slice(-1))
+       ){
+            return;
+       }       
+       
+       setCalc(calc + value);
+                          
   }
 
-  const calculate = () => {
-    setAnswer(eval(expression))
+  const calculate = () => {     
+     setResult(eval(calc).toString())
+     setCalc("")
   }
 
   const allClear = () => {
-    setExpression("")
-    setAnswer("0")
-  }
+    setCalc("")
+    setResult("0")
+  } 
 
   return (
     <div className="App">      
       <div className="container">
         <div className="grid">
-          <div className="display"
-               id="display">
+          <div className="display"id="display">
                  <input type="text"
-                        placeholder="0"
-                        value={expression}
-                        disabled />
-                 <div className="total">{answer}</div>
-               </div>
+                        placeholder=""
+                        value={calc}
+                        disabled
+                        id="display" />
+                 <div className="total">{result}</div>
+               </div>               
           <div className="button AC"
                id="clear"
                onClick={allClear}>AC</div>
@@ -82,7 +93,7 @@ function App() {
                onClick={() => display("0")}>0</div>
           <div className="button dot"
                id="decimal"
-               onClick={() => display(".")}>.</div>          
+               onClick={() => display(".")}>.</div>
         </div>
       </div>
     </div>
