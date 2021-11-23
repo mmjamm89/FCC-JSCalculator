@@ -1,35 +1,116 @@
 import React, { useState } from 'react';
 import './style.css';
 
-
 function App() {
 
-  const [calc, setCalc] = useState("");
-  const [result, setResult] = useState("0");
+     const [calc, setCalc] = useState("");
+     const [result, setResult] = useState(calc);
+   
+     function display(value) {
+       setCalc((prevValue) => {
+         if (
+           /[+*-/]/.test(value) &&
+           /[+*-/]/.test(prevValue[prevValue.length - 1])
+         ) {
+           let newValue;
+           if (/[-]/.test(value)) {
+             newValue = prevValue.slice(0, prevValue.length) + value;
+           } else {
+             let count = 0;
+             for (let i = 0; i < prevValue.length; i++) {
+               if (isNaN(+prevValue[i])) {
+                 count++;
+               } else {
+                 count = 0;
+               }
+             }
+             newValue = prevValue.slice(0, prevValue.length - count) + value;
+           }
+   
+           setCalc(newValue);
+         } else {
+           if (prevValue) {
+             prevValue = prevValue + "";
+             let valArr = prevValue.split(/[+/*-]/g);
+             let lastNumber = valArr[valArr.length - 1];
+             if (!isNaN(lastNumber) && /[.]/.test(lastNumber) && value === ".") {
+               value = "";
+             }
+           }
+   
+           setCalc(
+             (prevValue + value).replace(/^0/g, "").replace(/\.+/g, ".")
+           );
+         }
+       });
+   
+       setResult((prevValue) =>
+         (prevValue + value).replace(/^0/g, "").replace(/\.+/g, ".")
+       );
+     }
+   
+     function calculate() {
+       setResult(eval(calc));
+       setCalc(eval(calc));
+     }
+     function allClear() {
+       setCalc("");
+       setResult(0);
+     }
 
-  const operators = ['/', '*', '+', '-', '.'];
+//   const [calc, setCalc] = useState("");
+//   const [result, setResult] = useState(calc);  
 
-  const display = (value) => {
-       if(
-            operators.includes(value) && calc === '' ||
-            operators.includes(value) && operators.includes(calc.slice(-1))
-       ){
-            return;
-       }       
-       
-       setCalc(calc + value);
-                          
-  }
+//   const display = (value) => {
+    
+//      setCalc((prevValue) => {
+//           if(
+//           /[+*-/]/.test(value) &&
+//           /[+*-/]/.test(prevValue[prevValue.length - 1])
+//           ){
+//                let newValue;
+//                if (/[-]/.test(value)){
+//                     newValue = prevValue.slice(0, prevValue.length) + value; 
+//                }else{
+//                     let count = 0;
+//                     for(let i = 0; i < prevValue.length; i++){
+//                          if(isNaN(+prevValue[i])){
+//                               count++;
+//                          }else{
+//                               count = 0;
+//                          }
+//                     }
+//                     newValue = prevValue.slice(0, prevValue.length - count) + value;
+//                }
+//                setCalc(newValue);
+//           }else{
+//                if(prevValue){
+//                     prevValue = prevValue + "";
+//                     let valArr = prevValue.split(/[+/*-]/g);
+//                     let lastNumber = valArr[valArr.length - 1];
+//                     if(!isNaN(lastNumber) && /[.]/.test(lastNumber) && value === "."){
+//                          value = "";                         
+//                     }
+//                }
+//                setCalc(
+//                     (prevValue + value).replace(/^0/g, "").replace(/\.+/g, ".")
+//                );
+//           }
+//      })
+//      setCalc((prevValue => {
+//           (prevValue + value).replace(/^0/g, "").replace(/\.+/g, ".")
+//      }));
+//   }
 
-  const calculate = () => {     
-     setResult(eval(calc).toString())
-     setCalc("")
-  }
+//   const calculate = () => {     
+//      setResult(eval(calc));
+//      setCalc(eval(calc));
+//   }
 
-  const allClear = () => {
-    setCalc("")
-    setResult("0")
-  } 
+//   const allClear = () => {
+//     setCalc("")
+//     setResult("0")
+//   } 
 
   return (
     <div className="App">      
