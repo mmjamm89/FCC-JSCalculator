@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/FFC-JScalculator/static/css/main.d09aee56.chunk.css",
+    "main.js": "/FFC-JScalculator/static/js/main.76108e29.chunk.js",
+    "main.js.map": "/FFC-JScalculator/static/js/main.76108e29.chunk.js.map",
+    "runtime-main.js": "/FFC-JScalculator/static/js/runtime-main.7c65071b.js",
+    "runtime-main.js.map": "/FFC-JScalculator/static/js/runtime-main.7c65071b.js.map",
+    "static/js/2.b080894d.chunk.js": "/FFC-JScalculator/static/js/2.b080894d.chunk.js",
+    "static/js/2.b080894d.chunk.js.map": "/FFC-JScalculator/static/js/2.b080894d.chunk.js.map",
+    "index.html": "/FFC-JScalculator/index.html",
+    "static/css/main.d09aee56.chunk.css.map": "/FFC-JScalculator/static/css/main.d09aee56.chunk.css.map",
+    "static/js/2.b080894d.chunk.js.LICENSE.txt": "/FFC-JScalculator/static/js/2.b080894d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7c65071b.js",
+    "static/js/2.b080894d.chunk.js",
+    "static/css/main.d09aee56.chunk.css",
+    "static/js/main.76108e29.chunk.js"
+  ]
+}
